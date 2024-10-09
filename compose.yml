@@ -1,0 +1,13 @@
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server
+    environment:
+      #- CLICKHOUSE_DB=demo
+      #- CLICKHOUSE_USER=default
+      #- CLICKHOUSE_PASSWORD=demo
+      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1
+    ports:
+      - '9000:9000'
+      - '8123:8123'
+    volumes:
+      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
